@@ -1,0 +1,76 @@
+.signIn {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+
+    @media (max-width: 900px) {}
+
+    // flex-wrap: wrap;
+    .row_1 {
+        flex-shrink: 0;
+        flex: 1;
+        width: 50%;
+        display: none;
+
+        @media (min-width: 768px) {
+            display: flex;
+        }
+    }
+
+    .login_container {
+        flex-direction: row;
+
+    }
+
+    .logo-container {
+        margin-bottom: 40px;
+        padding: 1em;
+    }
+
+
+    .login_image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .row_2 {
+        box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
+        flex-shrink: 0;
+        flex: 1;
+        width: 50%;
+
+        .login_header {
+            line-height: 0;
+            color: var(--tertiary-color);
+        }
+
+        .login_desc {
+            font-size: 18px;
+            color: var(--quaternary-color);
+            margin-bottom: 3em;
+        }
+
+        .logo_container {
+            margin-bottom: 80px;
+            visibility: hidden;
+
+            @media (max-width: 768px) {
+                visibility: visible;
+            }
+
+        }
+
+        form {
+            width: 100%;
+
+            .fgt_pass {
+                color: var(--secondary-color);
+                margin: 1em 0;
+            }
+        }
+    }
+
+}
