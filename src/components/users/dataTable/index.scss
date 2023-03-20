@@ -1,0 +1,15 @@
+.table_container {
+    background: #fff;
+    height: 500;
+    width: 100%;
+    background: #fff;
+    margin-top: 2em;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+
+    .table_header {
+        font-weight: 600 !important;
+        // color: green;
+    }
+}

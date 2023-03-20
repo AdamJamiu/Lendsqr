@@ -50,7 +50,7 @@
         .login_desc {
             font-size: 18px;
             color: var(--quaternary-color);
-            margin-bottom: 3em;
+            margin-bottom: 2em;
         }
 
         .logo_container {
@@ -69,6 +69,8 @@
             .fgt_pass {
                 color: var(--secondary-color);
                 margin: 1em 0;
+                font-size: small;
+                font-weight: bold;
             }
         }
     }

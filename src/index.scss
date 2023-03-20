@@ -7,6 +7,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  // position: relative;
 }
 
 :root {
@@ -14,12 +15,20 @@ body {
   --secondary-color: #39CDCC;
   --tertiary-color: #213F7D;
   --quaternary-color: #545F7D;
-  --quinary-color: #f5f5f5;
-  --senary-color: #f5f5f5;
+  --quinary-color: #DF18FF;
+  --senary-color: #eee8ff;
   --septenary-color: #f5f5f5;
   --octonary-color: #f5f5f5;
   --nonary-color: #f5f5f5;
   --denary-color: #f5f5f5;
   --primary-font: "Work Sans", sans-serif;
   --secondary-font: "Work Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.txt_secondary {
+  color: var(--secondary-color);
 }

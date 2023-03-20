@@ -1,0 +1,10 @@
+.container {
+    overflow: hidden;
+    position: relative;
+
+    .content_title {
+        color: var(--tertiary-color);
+        font-size: 24px;
+        font-weight: 500;
+    }
+}

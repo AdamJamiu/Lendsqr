@@ -40,6 +40,7 @@ export const Button = styled.button<StyleProps>`
     leftPadding ? leftPadding : padding ? padding : 0}rem;
   padding-right: ${({ rightPadding, padding }) =>
     rightPadding ? rightPadding : padding ? padding : 0}rem;
+  position: relative;
 
   &:hover,
   &:focus {
@@ -83,29 +84,6 @@ export const OutlineButton = styled.button<StyleProps>`
     background: ${({ hoverBgColor, color }) => hoverBgColor || color};
     color: ${({ hoverColor }) => hoverColor || "#00071F"};
     border: none;
-    outline: none;
-  }
-`;
-export const BorderlessButton = styled.button<StyleProps>`
-  outline: none;
-  transition: all 0.2s;
-  font-size: ${({ titleSize }) => titleSize || 1.5}rem;
-  color: ${({ color }) => color || "#6DE7B4"};
-  font-weight: ${({ fontWeight }) => fontWeight || 700};
-  margin-right: ${({ rightMargin }) => rightMargin || 0}rem;
-  margin-left: ${({ leftMargin }) => leftMargin || 0}rem;
-  margin-top: ${({ topMargin }) => topMargin || "0"}rem;
-  margin-bottom: ${({ bottomMargin }) => bottomMargin || "0"}rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background: transparent;
-  border: none;
-
-  &:hover,
-  &:focus {
-    border: none;
-    color: ${({ hoverColor, color }) => hoverColor || color};
     outline: none;
   }
 `;
@@ -233,17 +211,49 @@ export const FlexRow = styled.div<StyleProps>`
   background-color: ${({ bgColor }) => bgColor || "transparent"};
   border-radius: ${({ radius }) => radius || 0}rem;
   border: 1px solid ${({ borderColor }) => borderColor || "transparent"};
+  cursor: ${({ cursor }) => cursor || "default"};
 `;
 
-export const Icon = styled.img<StyleProps>`
-  margin-top: ${({ topMargin }) => topMargin || 0}rem;
-  margin-bottom: ${({ bottomMargin }) => bottomMargin}rem;
-  margin-left: ${({ leftMargin }) => leftMargin || 0}rem;
-  margin-right: ${({ rightMargin }) => rightMargin || 0}rem;
-  width: ${({ width }) => `${width}rem` || "auto"};
+export const SearchInput = styled.div<StyleProps>`
+  background-color: #fff;
+  width: ${({ width, sizeUnit }) =>
+    sizeUnit && width ? `${width}${sizeUnit}` : width ? `${width}rem` : "100%"};
+  height: 100%;
+  margin-bottom: ${({ bottomMargin }) => bottomMargin || 0}rem;
+  position: relative;
+  border: 1.3px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
 
-  @media (max-width: 600px) {
-    transform: scale(0.85);
+  input {
+    border: none;
+    outline: none;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    color: var(--quaternary-color);
+    font-size: 15px;
+  }
+
+  div {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1.2px solid var(--primary-color);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    height: 100%;
+    width: 3rem;
+    background: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  img {
   }
 `;
 
@@ -255,6 +265,7 @@ export const TextInput = styled.div<StyleProps>`
   border-radius: 5px;
   padding: ${({ padding }) => padding || 0}rem;
   margin-bottom: ${({ bottomMargin }) => bottomMargin || 0}rem;
+  position: relative;
 
   input {
     border: none;
@@ -262,9 +273,83 @@ export const TextInput = styled.div<StyleProps>`
     width: 100%;
     box-sizing: border-box;
     height: 100%;
+    position: relative;
+    width: 100%;
   }
 
-  svg {
-    width: ${({ iconWidth }) => iconWidth || 2}rem;
+  p {
+    position: absolute;
+    top: 0.4em;
+    right: 1em;
+    font-size: small;
+    cursor: pointer;
+  }
+`;
+
+export const Avatar = styled.div<StyleProps>`
+  border-radius: 50%;
+  background-color: ${({ bgColor }) => bgColor || "transparent"};
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: ${({ borderColor }) =>
+    borderColor ? `1px solid ${borderColor}` : "none"};
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+`;
+
+export const SideMenuContainer = styled.div<StyleProps>`
+  position: fixed;
+  top: 5.5em;
+  left: 0;
+  width: 270px;
+  height: 100%;
+  padding: 1em 0;
+  background: #fff;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+  overflow-y: auto;
+  transition: all 0.2s ease;
+
+  @media (max-width: 768px) {
+    left: ${({ open }) => (open ? "0" : "-100%")};
+    transition: all 0.3s ease-in;
+    z-index: 999;
+
+    :before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+  }
+`;
+
+export const ContentContainer = styled.div<StyleProps>`
+  position: absolute;
+  z-index: -1;
+  max-width: 75.6vw;
+  height: 75vh;
+  padding: 2em;
+  background: #fbfbfb;
+  right: 0;
+  top: 5.5em;
+  left: 16.7em;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    padding-right: 1em;
   }
 `;
