@@ -2,12 +2,13 @@
 
     .side_active_link {
         color: var(--tertiary-color);
-        font-size: 15px;
+        font-size: 13px;
     }
 
     .nav_link_btn {
         color: var(--quaternary-color);
         opacity: 0.6;
+        padding: 0 2em;
 
         &:hover {
             // color: var(--tertiary-color) !important;
@@ -17,7 +18,7 @@
 
         .nav_link_txt {
             opacity: 1;
-            font-size: 15px;
+            font-size: 13px !important;
         }
     }
 

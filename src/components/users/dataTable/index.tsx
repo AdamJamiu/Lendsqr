@@ -75,7 +75,8 @@ export default function DataTable() {
           color: "var(--quaternary-color)",
           ".MuiDataGrid-columnHeaderTitle": {
             fontWeight: "600 !important",
-            fontSize: "14px !important",
+            fontSize: "12px !important",
+            padding: "1em",
           },
         }}
       />

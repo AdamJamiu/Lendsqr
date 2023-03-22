@@ -11,11 +11,17 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { IconButton } from "@mui/material";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import AppContext from "../../../context";
 
 const NavBar: React.FC = (): React.ReactElement => {
+  const { setActive } = React.useContext(AppContext);
+
   return (
     <nav className="navbar">
-      <IconButton className="menu_icon">
+      <IconButton
+        className="menu_icon"
+        onClick={() => setActive((state) => !state)}
+      >
         <MenuOutlinedIcon
           fontSize="small"
           sx={{ color: "var(--tertiary--color)" }}
@@ -26,7 +32,7 @@ const NavBar: React.FC = (): React.ReactElement => {
         <img src={logo} width="144.8px" height="30px" />
       </a>
 
-      <SearchInput width="350" sizeUnit="px">
+      <SearchInput width="400" sizeUnit="px">
         <input placeholder="Search for anything" type="search" />
         <div>
           <img src={searchIcon} alt="search" width="13.9px" height="14px" />

@@ -57,34 +57,31 @@ export const OutlineButton = styled.button<StyleProps>`
       ? `${width}${sizeUnit}`
       : width
       ? `${width}rem`
-      : "20rem"};
-  height: ${({ height }) => height || 4.5}rem;
-  border: 1px solid ${({ color }) => color || "#6DE7B4"};
-  border-radius: ${({ radius }) => radius || 0.8}rem;
+      : "fit-content"};
+  border: 1px solid ${({ color }) => color || "black"};
+  border-radius: ${({ radius }) => radius || 8}px;
   outline: none;
   background: transparent;
   transition: all 0.2s;
-  font-size: ${({ titleSize }) => titleSize || 1.5}rem;
+  font-size: ${({ titleSize }) => titleSize || 14}px;
   color: ${({ color }) => color || "#00071F"};
-  font-weight: ${({ fontWeight }) => fontWeight || 700};
+  font-weight: ${({ fontWeight }) => fontWeight || 600};
   margin-right: ${({ rightMargin }) => rightMargin || 0}rem;
   margin-left: ${({ leftMargin }) => leftMargin || 0}rem;
   margin-top: ${({ topMargin }) => topMargin || "0"}rem;
   margin-bottom: ${({ bottomMargin }) => bottomMargin || "0"}rem;
-  padding: 0 ${({ padding }) => padding || 0}rem;
-  padding-top: ${({ topPadding }) => topPadding || 0}rem;
-  padding-bottom: ${({ bottomPadding }) => bottomPadding || 0}rem;
+  padding-top: ${({ topPadding }) => topPadding || 1}em;
+  padding-bottom: ${({ bottomPadding }) => bottomPadding || 1}em;
   padding-left: ${({ leftPadding, padding }) =>
-    leftPadding ? leftPadding : padding ? padding : 0}rem;
+    leftPadding ? leftPadding : padding ? padding : 1}em;
   padding-right: ${({ rightPadding, padding }) =>
-    rightPadding ? rightPadding : padding ? padding : 0}rem;
+    rightPadding ? rightPadding : padding ? padding : 1}em;
 
   &:hover,
   &:focus {
     background: ${({ hoverBgColor, color }) => hoverBgColor || color};
-    color: ${({ hoverColor }) => hoverColor || "#00071F"};
-    border: none;
-    outline: none;
+    color: ${({ hoverColor }) => hoverColor || "#fff"};
+    cursor: pointer;
   }
 `;
 
@@ -171,9 +168,9 @@ export const FlexColumn = styled.div<StyleProps>`
   flex-direction: column;
   gap: ${({ gap }) => `${gap}rem` || "0"};
   height: ${({ height }) => `${height}%` || "auto"};
+  width: ${({ width }) => width || 100}%;
   justify-content: ${({ justifyContent }) => justifyContent || "center"};
   align-items: ${({ alignItems }) => alignItems || "flex-start"};
-  width: ${({ width }) => width || 100}%;
   margin-top: ${({ topMargin }) => topMargin || 0}rem;
   margin-bottom: ${({ bottomMargin }) => bottomMargin}rem;
   margin-left: ${({ leftMargin }) => leftMargin || 0}rem;
@@ -317,20 +314,9 @@ export const SideMenuContainer = styled.div<StyleProps>`
   @media (max-width: 768px) {
     left: ${({ open }) => (open ? "0" : "-100%")};
     transition: all 0.3s ease-in;
-    z-index: 999;
-
-    :before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: -1;
-    }
+    z-index: 9999;
+    position: absolute;
+    top: 0;
   }
 `;
 
@@ -351,5 +337,19 @@ export const ContentContainer = styled.div<StyleProps>`
     right: 0;
     max-width: 100%;
     padding-right: 1em;
+    position: relative;
   }
+`;
+
+export const CardContainer = styled.div<StyleProps>`
+  background: #fff;
+  padding: ${({ padding }) => padding || 0}em;
+  padding-top: ${({ topPadding }) => topPadding || 0}em;
+  padding-bottom: ${({ bottomPadding }) => bottomPadding || 0}em;
+  padding-left: ${({ leftPadding }) => leftPadding || 0}em;
+  padding-right: ${({ rightPadding }) => rightPadding || 0}em;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  margin-top: 2em;
 `;
