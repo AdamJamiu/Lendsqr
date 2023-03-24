@@ -6,6 +6,7 @@ import arrowDown from "../../../assets/sideMenu/arrowDown.svg";
 import { Link, NavLink } from "react-router-dom";
 import AppContext from "../../../context";
 import "./index.scss";
+import logOut from "../../../assets/sideMenu/log-out.svg";
 
 const SideMenu: React.FC = (): React.ReactElement => {
   const [isActive, setIsActive] = React.useState<string>("");
@@ -19,10 +20,10 @@ const SideMenu: React.FC = (): React.ReactElement => {
   React.useEffect(() => {
     function handleClickOutside(e) {
       e.preventDefault();
-      if (wrapperRef.current.contains(e.target)) {
+      if (!wrapperRef.current.contains(e.target) && active) {
         console.log("you clicked inside of the sidebar");
+        if (active) setActive(false);
       }
-      if (active) setActive(false);
     }
 
     // Attach event listener to document
@@ -59,14 +60,15 @@ const SideMenu: React.FC = (): React.ReactElement => {
         <img src={arrowDown} height="12px" width="12px" />
       </FlexRow>
 
-      <NavLink className="nav_link_btn" to="/dashboard">
+      <Link className="nav_link_btn" to="/dashboard">
         <FlexRow
           gap="1"
           cursor="pointer"
           justifyContent="flex-start"
-          leftPadding="1"
+          leftPadding="1.5"
           rightPadding="1"
-          // className="nav_link_btn"
+          className="nav_link_btn"
+          onClick={() => setActive(false)}
         >
           <img
             src={briefCase}
@@ -75,26 +77,31 @@ const SideMenu: React.FC = (): React.ReactElement => {
             width="16px"
           />
 
-          <p className="nav_link_txt">Dashboard</p>
+          <p>Dashboard</p>
         </FlexRow>
-      </NavLink>
+      </Link>
 
       {data.map((item, index) => (
         <React.Fragment>
-          <div className="nav_link_btn" key={index}>
+          <div className="nav_link_title" key={index}>
             <p className="nav_link_txt">{item.title}</p>
           </div>
 
           {item.meta_data.map((itm) => (
-            <NavLink className="nav_link_btn" to={itm.href}>
+            <Link to={itm.href}>
               <FlexRow
-                // onClick={() => handleActive(itm.text)}
+                onClick={() => {
+                  handleActive(itm.text);
+                  setActive(false);
+                }}
                 gap="1"
                 cursor="pointer"
                 justifyContent="flex-start"
-                leftPadding="1"
+                leftPadding="1.5"
                 rightPadding="1"
-                className="nav_link_btn"
+                className={`nav_link_btn ${
+                  isActive === itm.text ? "active" : ""
+                }`}
               >
                 <img
                   src={itm.iconSrc}
@@ -105,10 +112,21 @@ const SideMenu: React.FC = (): React.ReactElement => {
 
                 <p className="nav_link_txt">{itm.text}</p>
               </FlexRow>
-            </NavLink>
+            </Link>
           ))}
         </React.Fragment>
       ))}
+
+      <div className="divider-x"></div>
+      <FlexRow
+        justifyContent="flex-start"
+        gap="1"
+        leftPadding="1"
+        className="nav_link_btn"
+      >
+        <img src={logOut} width="16px" height="16px" />
+        <p>Logout</p>
+      </FlexRow>
     </SideMenuContainer>
   );
 };

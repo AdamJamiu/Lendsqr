@@ -7,7 +7,6 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  // position: relative;
 }
 
 :root {
@@ -31,4 +30,27 @@ a {
 
 .txt_secondary {
   color: var(--secondary-color);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

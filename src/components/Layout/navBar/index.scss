@@ -1,4 +1,17 @@
 .navbar {
+    padding: 1em 2em;
+    background-color: #fff;
+    box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 97%;
+    box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+
 
     @media (max-width: 750px) {
 
@@ -33,18 +46,6 @@
     .more_icon {
         display: none;
     }
-
-    padding: 1em 2em;
-    background-color: #fff;
-    box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 2;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 98%;
 
     .nav_link {
         color: var(--quaternary-color);

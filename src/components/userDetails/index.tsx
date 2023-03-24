@@ -39,9 +39,9 @@ const UserDetails: React.FC = (): React.ReactElement => {
             <KeyboardBackspaceIcon />
             <p>Back to Users</p>
           </FlexRow>
-          <FlexRow justifyContent="space-between" bottomMargin="2">
+          <FlexRow justifyContent="space-between" wrap="wrap" bottomMargin="2">
             <p className="user_details_title">User Details</p>
-            <FlexRow gap="1" width="100%">
+            <FlexRow gap="1" width="100%" wrap="wrap" className="btn_wrap">
               <OutlineButton
                 topPadding="0.5"
                 bottomPadding="0.5"
@@ -66,45 +66,39 @@ const UserDetails: React.FC = (): React.ReactElement => {
             bottomPadding="0"
             topPadding="2"
           >
-            <FlexRow
-              gap="0"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-            >
-              <FlexRow gap="1.3" className="divider">
-                <div className="img_wrapper">
-                  <img
-                    src={data?.profile?.avatar}
-                    alt="user_img"
-                    height="90px"
-                    width="90px"
-                  />
-                </div>
-                <FlexColumn
-                  width="max-content"
-                  // rightPadding="1"
-                  className="divider"
-                >
-                  <p className="user_details_name">
-                    {data?.profile?.firstName} {data?.profile?.lastName}
-                  </p>
+            <FlexRow gap="5" wrap="wrap" justifyContent="center" className="">
+              <div className="img_wrapper wrapper">
+                <img
+                  src={data?.profile?.avatar}
+                  alt="user_img"
+                  height="90px"
+                  width="50px"
+                />
+              </div>
+              <FlexColumn
+                width="max-content"
+                // rightPadding="1"
+                className="wrapper divider-y"
+              >
+                <p className="user_details_name">
+                  {data?.profile?.firstName} {data?.profile?.lastName}
+                </p>
 
-                  <p className="user_details_number">{data?.accountNumber}</p>
-                </FlexColumn>
+                <p className="user_details_number">{data?.accountNumber}</p>
+              </FlexColumn>
 
-                <FlexColumn className="divider">
-                  <p className="user_details_rating">User's Tier</p>
-                  <Rating name="simple-controlled" value={1} />
-                </FlexColumn>
+              <FlexColumn className="divider-y wrapper">
+                <p className="user_details_rating">User's Tier</p>
+                <Rating name="simple-controlled" value={1} />
+              </FlexColumn>
 
-                <FlexColumn className="">
-                  <p className="user_details_balance">
-                    &#8358;
-                    {data?.accountBalance}
-                  </p>
-                  <p className="user_details_num">{data?.accountNumber}</p>
-                </FlexColumn>
-              </FlexRow>
+              <FlexColumn className="wrapper divider-y">
+                <p className="user_details_balance">
+                  &#8358;
+                  {data?.accountBalance}
+                </p>
+                <p className="user_details_num">{data?.accountNumber}</p>
+              </FlexColumn>
             </FlexRow>
 
             {/* user details tab panel */}
@@ -112,8 +106,9 @@ const UserDetails: React.FC = (): React.ReactElement => {
               gap="1"
               className="user_details_tab"
               topMargin="2"
-              justifyContent="space-between"
-              alignItems="flex-end"
+              justifyContent="flex-start"
+              alignItems="center"
+              wrap="wrap"
             >
               <div
                 className={`${
@@ -267,7 +262,7 @@ const UserDetails: React.FC = (): React.ReactElement => {
 
             {/* Socials */}
 
-            <div className="user_details_card">
+            <div className="divider-x">
               <p className="card_details_title">Socials</p>
 
               <FlexRow

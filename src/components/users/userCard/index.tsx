@@ -14,7 +14,7 @@ const UserCard: React.FC = (): React.ReactElement => {
           <img src={userImg} alt="user_img" height="24px" width="24px" />
         </div>
         <p className="user_card_name">Users</p>
-        <p className="user_card_number">2, 453</p>
+        <p className="user_card_number">2,453</p>
       </div>
 
       <div className="user_card_row">

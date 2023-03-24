@@ -9,6 +9,7 @@ function AppProvider({ children }: AppProviderProps) {
   const [id, setId] = React.useState<number>(0);
   const [active, setActive] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState<boolean>(false);
+  const [paramId, setParamId] = React.useState<string>("");
 
   const contextValue: AppContextProps = {
     id,
@@ -17,6 +18,8 @@ function AppProvider({ children }: AppProviderProps) {
     setActive,
     loading,
     setLoading,
+    paramId: "",
+    setParamId: () => {},
   };
 
   return (

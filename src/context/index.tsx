@@ -7,6 +7,8 @@ export interface AppContextProps {
   setActive: (active: boolean) => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
+  paramId: string;
+  setParamId: (id: string) => void;
 }
 
 const AppContext = createContext<AppContextProps>({
@@ -16,6 +18,8 @@ const AppContext = createContext<AppContextProps>({
   setActive: () => {},
   loading: false,
   setLoading: () => {},
+  paramId: "",
+  setParamId: () => {},
 });
 
 export default AppContext;

@@ -34,12 +34,12 @@ export const Button = styled.button<StyleProps>`
   margin-top: ${({ topMargin }) => topMargin || "0"}rem;
   margin-bottom: ${({ bottomMargin }) => bottomMargin || "0"}rem;
   padding: 0 ${({ padding }) => padding || 0}rem;
-  padding-top: ${({ topPadding }) => topPadding || 0}rem;
-  padding-bottom: ${({ bottomPadding }) => bottomPadding || 0}rem;
+  padding-top: ${({ topPadding }) => topPadding || 1}rem;
+  padding-bottom: ${({ bottomPadding }) => bottomPadding || 1}rem;
   padding-left: ${({ leftPadding, padding }) =>
-    leftPadding ? leftPadding : padding ? padding : 0}rem;
+    leftPadding ? leftPadding : padding ? padding : 1}rem;
   padding-right: ${({ rightPadding, padding }) =>
-    rightPadding ? rightPadding : padding ? padding : 0}rem;
+    rightPadding ? rightPadding : padding ? padding : 1}rem;
   position: relative;
 
   &:hover,
@@ -57,7 +57,7 @@ export const OutlineButton = styled.button<StyleProps>`
       ? `${width}${sizeUnit}`
       : width
       ? `${width}rem`
-      : "fit-content"};
+      : "max-content"};
   border: 1px solid ${({ color }) => color || "black"};
   border-radius: ${({ radius }) => radius || 8}px;
   outline: none;
@@ -258,10 +258,14 @@ export const TextInput = styled.div<StyleProps>`
   background-color: #fff;
   width: ${({ width, sizeUnit }) =>
     sizeUnit && width ? `${width}${sizeUnit}` : width ? `${width}rem` : "100%"};
-  border: 2px solid rgba(84, 95, 125, 0.15);
+  border: 1px solid rgba(84, 95, 125, 0.15);
   border-radius: 5px;
-  padding: ${({ padding }) => padding || 0}rem;
-  margin-bottom: ${({ bottomMargin }) => bottomMargin || 0}rem;
+  padding-right: ${({ rightPadding }) => rightPadding || 0.6}em;
+  padding-left: ${({ leftPadding }) => leftPadding || 0.6}em;
+  padding-top: ${({ topPadding }) => topPadding || 0.6}em;
+  padding-bottom: ${({ bottomPadding }) => bottomPadding || 0.6}em;
+  // padding: ${({ padding }) => padding || 0}rem;
+  margin-bottom: ${({ bottomMargin }) => bottomMargin || 0}em;
   position: relative;
 
   input {
@@ -272,6 +276,18 @@ export const TextInput = styled.div<StyleProps>`
     height: 100%;
     position: relative;
     width: 100%;
+    placeholder: ${({ placeholder }) => placeholder || "Enter text"};
+  }
+
+  select {
+    border: none;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    border: 1px solid rgba(84, 95, 125, 0.15);
   }
 
   p {
@@ -280,6 +296,16 @@ export const TextInput = styled.div<StyleProps>`
     right: 1em;
     font-size: small;
     cursor: pointer;
+  }
+
+  option {
+    border: none;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    position: relative;
+    width: 100%;
   }
 `;
 
@@ -303,8 +329,9 @@ export const SideMenuContainer = styled.div<StyleProps>`
   position: fixed;
   top: 5.5em;
   left: 0;
+  bottom: 0;
   width: 270px;
-  height: 100%;
+  height: 84vh;
   padding: 1em 0;
   background: #fff;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
@@ -317,6 +344,8 @@ export const SideMenuContainer = styled.div<StyleProps>`
     z-index: 9999;
     position: absolute;
     top: 0;
+    bottom: 0;
+    height: 98vh;
   }
 `;
 
@@ -331,6 +360,7 @@ export const ContentContainer = styled.div<StyleProps>`
   top: 5.5em;
   left: 16.7em;
   overflow-y: auto;
+  overflow-x: hidden;
 
   @media (max-width: 768px) {
     left: 0;

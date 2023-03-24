@@ -2,6 +2,17 @@ import * as React from "react";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import "./index.scss";
 import useFetch from "../../../hooks/useFetch";
+import MenuIcon from "../../menu";
+import AppContext from "../../../context";
+import CustomFilterMenu from "../../customFilterMenu";
+import FilterListIcon from "@mui/icons-material/FilterList";
+
+const generateStatus = () => {
+  const values = ["Active", "Inactive", "Pending", "Blacklisted"];
+
+  // Choose a random value from the array
+  return values[Math.floor(Math.random() * values.length)];
+};
 
 const columns: GridColDef[] = [
   {
@@ -9,39 +20,65 @@ const columns: GridColDef[] = [
     headerName: "ORGANIZATION",
     width: 220,
     type: "string",
+    hideSortIcons: true,
   },
-  { field: "userName", headerName: "USERNAME", width: 135, type: "string" },
-  { field: "email", headerName: "EMAIL", width: 240, type: "email" },
+  {
+    field: "userName",
+    headerName: "USERNAME",
+    width: 135,
+    type: "string",
+    hideSortIcons: true,
+  },
+  {
+    field: "email",
+    headerName: "EMAIL",
+    width: 240,
+    type: "email",
+    hideSortIcons: true,
+    disableReorder: true,
+  },
   {
     field: "phoneNumber",
     headerName: "PHONE NUMBER",
     type: "number",
     width: 170,
+    disableReorder: true,
+    hideSortIcons: true,
   },
   {
     field: "dateJoined",
     headerName: "DATE JOINED",
     type: "string",
-    width: 150,
+    width: 190,
+    hideSortIcons: true,
+    disableReorder: true,
   },
   {
     field: "status",
     headerName: "STATUS",
     type: "string",
-    width: 60,
+    width: 150,
+    disableReorder: true,
+    renderCell: (params) => (
+      <div className={`${params.value}`}>
+        <p>{params.value}</p>
+      </div>
+    ),
   },
-  //   {
-  //     field: "userNames",
-  //     headerName: "USERNAME",
-  //     description: "This column has a value getter and is not sortable.",
-  //     sortable: false,
-  //     width: 160,
-  //     valueGetter: (params: GridValueGetterParams) =>
-  //       `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-  //   },
+
+  {
+    field: "icon",
+    headerName: "",
+    width: 10,
+    renderCell: (params) => <MenuIcon id={params.id.toString()} />,
+  },
 ];
 
 export default function DataTable() {
+  const gridRef = React.useRef(null);
+  const [myId, setMyId] = React.useState<string>("");
+  const { setParamId } = React.useContext(AppContext);
+
   const { data } = useFetch();
 
   const getRows = data?.map((item: any) => {
@@ -52,7 +89,8 @@ export default function DataTable() {
       email: item.email,
       phoneNumber: item.phoneNumber,
       dateJoined: new Date(item.createdAt),
-      status: item.employmentStatus,
+      status: generateStatus(),
+      icon: MenuIcon,
     };
   });
 
@@ -66,10 +104,18 @@ export default function DataTable() {
       className="table_container"
     >
       <DataGrid
+        ref={gridRef}
         rows={getRows}
         columns={columns}
         pageSize={10}
+        disableColumnMenu={true}
+        components={{
+          ColumnHeaderFilterIconButton: CustomFilterMenu,
+          ColumnMenuIcon: FilterListIcon,
+        }}
+        getRowClassName={(params) => `super-app-theme--${params.row.status}`}
         rowsPerPageOptions={[5]}
+        // onRowClick={(params) => setMyId(params.id)}
         sx={{
           border: "none",
           color: "var(--quaternary-color)",

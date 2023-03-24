@@ -12,4 +12,72 @@
         font-weight: 600 !important;
         // color: green;
     }
+
+    .Active {
+        background-color: #f3fcfc !important;
+        width: 100%;
+        padding: 0 2em;
+        margin: 0;
+        line-height: 0;
+        text-align: center;
+        border-radius: 100px;
+        color: green !important;
+        opacity: 1 !important;
+    }
+
+    .Inactive {
+        background-color: #F5F5F5 !important;
+        width: 100%;
+        padding: 0 2em;
+        margin: 0;
+        line-height: 0;
+        text-align: center;
+        border-radius: 100px;
+
+        p {
+            color: #545F7D !important;
+        }
+    }
+
+    .Pending {
+        background: #fdf7e5;
+        width: 100%;
+        padding: 0 2em;
+        margin: 0;
+        line-height: 0;
+        text-align: center;
+        border-radius: 100px;
+
+        P {
+            color: #E9B200 !important;
+        }
+    }
+
+    .Blacklisted {
+        background: #FCE6EB !important;
+        width: 100%;
+        padding: 0 2em;
+        margin: 0;
+        line-height: 0;
+        text-align: center;
+        border-radius: 100px;
+
+        p {
+            color: #E4033B !important;
+        }
+    }
+
+
+}
+
+.active {
+    background-color: #f3fcfc !important;
+    color: var(--tertiary-color) !important;
+    opacity: 1 !important;
+}
+
+.inactve {
+    background-color: #fff !important;
+    color: var(--quaternary-color) !important;
+    opacity: 0.7 !important;
 }
