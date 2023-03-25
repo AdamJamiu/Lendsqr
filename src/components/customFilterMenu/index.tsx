@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Popover from "@mui/material/Popover";
-// import Button from "@mui/material/Button";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import { IconButton, TextField } from "@mui/material";
+import { IconButton } from "@mui/material";
 import "./index.scss";
 import { OutlineButton, Button, TextInput } from "../../style";
 
@@ -13,21 +12,20 @@ const CustomFilterMenu: React.FC = (): React.ReactElement => {
     setAnchorEl(e.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     setAnchorEl(null);
   };
 
   const open = Boolean(anchorEl);
 
-  const applyFilters = () => {
-    // Apply filters here
+  const applyFilters = (): void => {
     handleClose();
   };
 
   return (
     <React.Fragment>
-      <IconButton>
-        <FilterListIcon onClick={handleClick} />
+      <IconButton onClick={handleClick}>
+        <FilterListIcon />
       </IconButton>
       <Popover
         open={open}
