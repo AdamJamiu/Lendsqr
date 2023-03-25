@@ -107,14 +107,13 @@ export default function DataTable() {
         ref={gridRef}
         rows={getRows}
         columns={columns}
-        pageSize={10}
+        pageSizeOptions={[25]}
         disableColumnMenu={true}
         components={{
           ColumnHeaderFilterIconButton: CustomFilterMenu,
           ColumnMenuIcon: FilterListIcon,
         }}
         getRowClassName={(params) => `super-app-theme--${params.row.status}`}
-        rowsPerPageOptions={[5]}
         // onRowClick={(params) => setMyId(params.id)}
         sx={{
           border: "none",

@@ -55,5 +55,5 @@ export interface StyleProps {
     cursor?: string,
     borderWidth?: string,
     iconWidth?: string;
-
+    opn?: boolean;
 }

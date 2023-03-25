@@ -6,11 +6,11 @@ import { IconButton, TextField } from "@mui/material";
 import "./index.scss";
 import { OutlineButton, Button, TextInput } from "../../style";
 
-const CustomFilterMenu: React.FC = ({ filterModel, e }): React.ReactElement => {
-  const [anchorEl, setAnchorEl] = useState(null);
+const CustomFilterMenu: React.FC = (): React.ReactElement => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(e.currentTarget);
   };
 
   const handleClose = () => {
@@ -21,7 +21,6 @@ const CustomFilterMenu: React.FC = ({ filterModel, e }): React.ReactElement => {
 
   const applyFilters = () => {
     // Apply filters here
-    console.log(filterModel);
     handleClose();
   };
 

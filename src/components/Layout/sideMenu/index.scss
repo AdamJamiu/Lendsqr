@@ -1,10 +1,32 @@
-.sidemmenu_container {
+.open {
+    left: 0 !important;
+    transition: all 0.2s ease;
+}
 
-    .side_active_link {
-        color: var(--tertiary-color);
-        font-size: 13px;
+.sidemenu_container {
+    position: fixed;
+    top: 5.5em;
+    left: 0;
+    bottom: 0;
+    width: 270px;
+    height: 84vh;
+    padding: 1em 0;
+    background: #fff;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+    overflow-y: auto;
+    transition: all 0.2s ease;
+
+    @media (max-width: 768px) {
+        transition: all 0.3s ease-in;
+        z-index: 9999;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 98vh;
+        left: -100%;
     }
 }
+
 
 .nav_link_btn {
     color: var(--quaternary-color) !important;

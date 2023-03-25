@@ -18,13 +18,13 @@ const SideMenu: React.FC = (): React.ReactElement => {
   const wrapperRef = React.useRef<HTMLHeadingElement>(null);
 
   React.useEffect(() => {
-    function handleClickOutside(e) {
+    function handleClickOutside(e: any) {
       e.preventDefault();
-      if (wrapperRef.current) {
-        if (!wrapperRef.current.contains(e.target) && active) {
-          console.log("you clicked inside of the sidebar");
-          if (active) setActive(false);
-        }
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(e.target as Node & HTMLElement)
+      ) {
+        setActive(false);
       }
     }
     // Attach event listener to document
@@ -34,12 +34,12 @@ const SideMenu: React.FC = (): React.ReactElement => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [wrapperRef]);
+  }, [wrapperRef.current]);
 
   return (
-    <SideMenuContainer
-      open={active}
-      className="sidemenu_container"
+    <div
+      // open={active}
+      className={`${active ? "open" : ""} sidemenu_container`}
       ref={wrapperRef}
     >
       <FlexRow
@@ -82,41 +82,49 @@ const SideMenu: React.FC = (): React.ReactElement => {
         </FlexRow>
       </Link>
 
-      {data?.map((item, index) => (
-        <React.Fragment>
-          <div className="nav_link_title" key={index}>
-            <p className="nav_link_txt">{item?.title}</p>
-          </div>
+      {data?.map(
+        (
+          item: {
+            title: string;
+            meta_data: { href: string; text: string; iconSrc: string }[];
+          },
+          index
+        ) => (
+          <React.Fragment>
+            <div className="nav_link_title" key={index}>
+              <p className="nav_link_txt">{item?.title}</p>
+            </div>
 
-          {item?.meta_data.map((itm) => (
-            <Link to={itm?.href}>
-              <FlexRow
-                onClick={() => {
-                  handleActive(itm?.text);
-                  setActive(false);
-                }}
-                gap="1"
-                cursor="pointer"
-                justifyContent="flex-start"
-                leftPadding="1.5"
-                rightPadding="1"
-                className={`nav_link_btn ${
-                  isActive === itm?.text ? "active" : ""
-                }`}
-              >
-                <img
-                  src={itm?.iconSrc}
-                  alt={itm?.text}
-                  height="16px"
-                  width="16px"
-                />
+            {item?.meta_data.map((itm) => (
+              <Link to={itm?.href}>
+                <FlexRow
+                  onClick={() => {
+                    handleActive(itm?.text);
+                    setActive(false);
+                  }}
+                  gap="1"
+                  cursor="pointer"
+                  justifyContent="flex-start"
+                  leftPadding="1.5"
+                  rightPadding="1"
+                  className={`nav_link_btn ${
+                    isActive === itm?.text ? "active" : ""
+                  }`}
+                >
+                  <img
+                    src={itm?.iconSrc}
+                    alt={itm?.text}
+                    height="16px"
+                    width="16px"
+                  />
 
-                <p className="nav_link_txt">{itm?.text}</p>
-              </FlexRow>
-            </Link>
-          ))}
-        </React.Fragment>
-      ))}
+                  <p className="nav_link_txt">{itm?.text}</p>
+                </FlexRow>
+              </Link>
+            ))}
+          </React.Fragment>
+        )
+      )}
 
       <div className="divider-x"></div>
       <FlexRow
@@ -130,7 +138,7 @@ const SideMenu: React.FC = (): React.ReactElement => {
       </FlexRow>
 
       <p className="version">V1.2.0</p>
-    </SideMenuContainer>
+    </div>
   );
 };
 

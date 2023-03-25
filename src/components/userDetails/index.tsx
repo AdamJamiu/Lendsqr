@@ -11,15 +11,15 @@ import useFetchId from "../../hooks/useFetchId";
 // import profile from "../../assets/users/usser-details.svg";
 import { Rating } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import gear from "../../assets/gear.svg";
-import "./index.scss";
 import AppContext from "../../context";
 import LoadingGear from "../loading";
+import "./index.scss";
+import UserData from "../../model/interface/data";
 
-const UserDetails: React.FC = (): React.ReactElement => {
+const UserDetails: React.FC = () => {
   const { loading } = React.useContext(AppContext);
   const { id } = useParams();
-  const { data } = useFetchId(id);
+  const { data }: any = useFetchId(id);
   const navigate = useNavigate();
   const [isTabActive, setIsTabActive] = React.useState<number>(0);
 
@@ -66,7 +66,7 @@ const UserDetails: React.FC = (): React.ReactElement => {
             bottomPadding="0"
             topPadding="2"
           >
-            <FlexRow gap="5" wrap="wrap" justifyContent="center" className="">
+            <FlexRow gap="5" wrap="wrap" justifyContent="center">
               <div className="img_wrapper wrapper">
                 <img
                   src={data?.profile?.avatar}
@@ -75,11 +75,7 @@ const UserDetails: React.FC = (): React.ReactElement => {
                   width="50px"
                 />
               </div>
-              <FlexColumn
-                width="max-content"
-                // rightPadding="1"
-                className="wrapper divider-y"
-              >
+              <FlexColumn width="max-content" className="wrapper divider-y">
                 <p className="user_details_name">
                   {data?.profile?.firstName} {data?.profile?.lastName}
                 </p>

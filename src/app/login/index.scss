@@ -1,8 +1,13 @@
-* {
-    font-family: 'Avenir';
+@font-face {
+    font-family: "Avenir";
+    /*Can be any text*/
+    src: local("MetropolisMedium"),
+        url("../src/assets/fonts/avenir/Metropolis-Medium.otf") format("truetype");
 }
 
+
 .signIn {
+    font-family: 'Avenir' !important;
     position: fixed;
     top: 0;
     left: 0;

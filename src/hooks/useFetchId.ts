@@ -1,7 +1,7 @@
 import React from "react";
 import AppContext from "../context";
 
-const useFetchId = (id: number) => {
+const useFetchId = (id: string | undefined) => {
     const [data, setData] = React.useState<[]>([]);
     const { setLoading } = React.useContext(AppContext);
 

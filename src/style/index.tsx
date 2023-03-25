@@ -346,7 +346,6 @@ export const SideMenuContainer = styled.div<StyleProps>`
   transition: all 0.2s ease;
 
   @media (max-width: 768px) {
-    left: ${({ open }) => (open ? "0" : "-100%")};
     transition: all 0.3s ease-in;
     z-index: 9999;
     position: absolute;
