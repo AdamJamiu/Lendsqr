@@ -18,10 +18,7 @@ const NavBar: React.FC = (): React.ReactElement => {
 
   return (
     <nav className="navbar">
-      <IconButton
-        className="menu_icon"
-        onClick={() => setActive((state) => !state)}
-      >
+      <IconButton className="menu_icon" onClick={() => setActive(true)}>
         <MenuOutlinedIcon
           fontSize="small"
           sx={{ color: "var(--tertiary--color)" }}

@@ -23,7 +23,8 @@ export const SignIn: React.FC = (): React.ReactElement => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    Navigate("/dashboard");
+    // Navigate("/dashboard");
+    document.location.href = "/dashboard";
   };
 
   return (
