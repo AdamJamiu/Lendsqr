@@ -10,7 +10,10 @@ const Dashboard: React.FC = (): React.ReactElement => {
   document.title = "Lendsqr | Dashboard";
 
   return (
-    <div className={`dashboard_container ${active ? "show-overlay" : ""}`}>
+    <div
+      className={`dashboard_container ${active ? "show-overlay" : ""}`}
+      data-testid="dashboard"
+    >
       <NavBar />
       <SideMenu />
       <Outlet />

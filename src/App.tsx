@@ -9,8 +9,8 @@ import UserDetails from "./components/userDetails";
 
 function App() {
   return (
-    <AppProvider>
-      <Router>
+    <Router>
+      <AppProvider>
         <Routes>
           <Route index element={<SignIn />} path="/" />
           <Route element={<Dashboard />} path="/dashboard">
@@ -23,8 +23,8 @@ function App() {
           </Route>
           <Route element={<div>404 Nor Fount</div>} path="*" />
         </Routes>
-      </Router>
-    </AppProvider>
+      </AppProvider>
+    </Router>
   );
 }
 

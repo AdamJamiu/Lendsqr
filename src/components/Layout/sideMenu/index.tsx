@@ -20,12 +20,13 @@ const SideMenu: React.FC = (): React.ReactElement => {
   React.useEffect(() => {
     function handleClickOutside(e) {
       e.preventDefault();
-      if (!wrapperRef.current.contains(e.target) && active) {
-        console.log("you clicked inside of the sidebar");
-        if (active) setActive(false);
+      if (wrapperRef.current) {
+        if (!wrapperRef.current.contains(e.target) && active) {
+          console.log("you clicked inside of the sidebar");
+          if (active) setActive(false);
+        }
       }
     }
-
     // Attach event listener to document
     document.addEventListener("mousedown", handleClickOutside);
 
@@ -81,17 +82,17 @@ const SideMenu: React.FC = (): React.ReactElement => {
         </FlexRow>
       </Link>
 
-      {data.map((item, index) => (
+      {data?.map((item, index) => (
         <React.Fragment>
           <div className="nav_link_title" key={index}>
-            <p className="nav_link_txt">{item.title}</p>
+            <p className="nav_link_txt">{item?.title}</p>
           </div>
 
-          {item.meta_data.map((itm) => (
-            <Link to={itm.href}>
+          {item?.meta_data.map((itm) => (
+            <Link to={itm?.href}>
               <FlexRow
                 onClick={() => {
-                  handleActive(itm.text);
+                  handleActive(itm?.text);
                   setActive(false);
                 }}
                 gap="1"
@@ -100,17 +101,17 @@ const SideMenu: React.FC = (): React.ReactElement => {
                 leftPadding="1.5"
                 rightPadding="1"
                 className={`nav_link_btn ${
-                  isActive === itm.text ? "active" : ""
+                  isActive === itm?.text ? "active" : ""
                 }`}
               >
                 <img
-                  src={itm.iconSrc}
-                  alt={itm.text}
+                  src={itm?.iconSrc}
+                  alt={itm?.text}
                   height="16px"
                   width="16px"
                 />
 
-                <p className="nav_link_txt">{itm.text}</p>
+                <p className="nav_link_txt">{itm?.text}</p>
               </FlexRow>
             </Link>
           ))}
@@ -127,6 +128,8 @@ const SideMenu: React.FC = (): React.ReactElement => {
         <img src={logOut} width="16px" height="16px" />
         <p>Logout</p>
       </FlexRow>
+
+      <p className="version">V1.2.0</p>
     </SideMenuContainer>
   );
 };

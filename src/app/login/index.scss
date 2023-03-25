@@ -1,3 +1,7 @@
+* {
+    font-family: 'Avenir';
+}
+
 .signIn {
     position: fixed;
     top: 0;
@@ -8,7 +12,6 @@
 
     @media (max-width: 900px) {}
 
-    // flex-wrap: wrap;
     .row_1 {
         flex-shrink: 0;
         flex: 1;
@@ -16,20 +19,22 @@
         display: none;
 
         @media (min-width: 768px) {
+            margin-top: 2em;
             display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
         }
     }
 
     .login_container {
         flex-direction: row;
-
     }
 
     .logo-container {
-        margin-bottom: 40px;
+        margin-bottom: 50px;
         padding: 1em;
     }
-
 
     .login_image {
         width: 100%;
@@ -43,24 +48,19 @@
         width: 50%;
 
         .login_header {
+            margin-top: 1em;
             line-height: 0;
+            font-size: 40px;
+            font-weight: 700;
             color: var(--tertiary-color);
         }
 
         .login_desc {
-            font-size: 18px;
+            font-size: 20px;
             color: var(--quaternary-color);
-            margin-bottom: 2em;
-        }
-
-        .logo_container {
-            margin-bottom: 80px;
-            visibility: hidden;
-
-            @media (max-width: 768px) {
-                visibility: visible;
-            }
-
+            line-height: 0;
+            margin-bottom: 3em;
+            font-weight: 400;
         }
 
         form {
@@ -68,9 +68,9 @@
 
             .fgt_pass {
                 color: var(--secondary-color);
-                margin: 1em 0;
+                margin: 1.5em 0;
                 font-size: small;
-                font-weight: bold;
+                font-weight: 500;
             }
         }
     }

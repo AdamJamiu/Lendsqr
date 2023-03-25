@@ -41,6 +41,7 @@ export const Button = styled.button<StyleProps>`
   padding-right: ${({ rightPadding, padding }) =>
     rightPadding ? rightPadding : padding ? padding : 1}rem;
   position: relative;
+  display: block;
 
   &:hover,
   &:focus {
@@ -158,7 +159,7 @@ export const CustomContainer = styled.div<StyleProps>`
   border-radius: ${({ radius }) => radius || 0}rem;
   display: ${({ display }) => display || "flex"};
   justify-content: ${({ justifyContent }) => justifyContent || "flex-start"};
-  align-items: ${({ alignItems }) => alignItems || "center"};
+  align-items: ${({ alignItems }) => alignItems || "flex-start"};
   border: ${({ borderColor }) =>
     borderColor ? `1px solid ${borderColor}` : "none"};
 `;
@@ -256,15 +257,19 @@ export const SearchInput = styled.div<StyleProps>`
 
 export const TextInput = styled.div<StyleProps>`
   background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: ${({ width, sizeUnit }) =>
-    sizeUnit && width ? `${width}${sizeUnit}` : width ? `${width}rem` : "100%"};
+    sizeUnit && width ? `${width}${sizeUnit}` : width ? `${width}rem` : "95%"};
   border: 1px solid rgba(84, 95, 125, 0.15);
+  border-width: ${({ borderWidth }) => borderWidth || 1}px;
   border-radius: 5px;
   padding-right: ${({ rightPadding }) => rightPadding || 0.6}em;
   padding-left: ${({ leftPadding }) => leftPadding || 0.6}em;
   padding-top: ${({ topPadding }) => topPadding || 0.6}em;
   padding-bottom: ${({ bottomPadding }) => bottomPadding || 0.6}em;
-  // padding: ${({ padding }) => padding || 0}rem;
   margin-bottom: ${({ bottomMargin }) => bottomMargin || 0}em;
   position: relative;
 
@@ -276,6 +281,7 @@ export const TextInput = styled.div<StyleProps>`
     height: 100%;
     position: relative;
     width: 100%;
+    color: #545f7d;
     placeholder: ${({ placeholder }) => placeholder || "Enter text"};
   }
 
@@ -292,9 +298,10 @@ export const TextInput = styled.div<StyleProps>`
 
   p {
     position: absolute;
-    top: 0.4em;
+    top: 0.7em;
     right: 1em;
-    font-size: small;
+    font-size: 12px;
+    font-weight: 500;
     cursor: pointer;
   }
 
