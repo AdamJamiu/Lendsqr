@@ -1,9 +1,10 @@
 // import Dashboard from '../src/app/dashboard/index';
 import { describe, it, expect, afterEach } from "vitest";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
-import SideMenu from "../src/components/Layout/sideMenu/index";
+// import SideMenu from "../src/components/Layout/sideMenu/index";
 import React from "react";
 import Login from "../src/app/login/index";
+import App from "../src/App";
 
 describe("Login Component", async () => {
   /**
@@ -14,7 +15,7 @@ describe("Login Component", async () => {
   });
 
   it("renders a logo image", () => {
-    const { getByAltText } = render(<Login />);
+    const { getByAltText } = render(<App />);
     const logoImg = getByAltText("lendsqr_logo");
 
     // Post Expectations
@@ -22,7 +23,7 @@ describe("Login Component", async () => {
   });
 
   it("renders without crashing", async () => {
-    render(<Login />);
+    render(<App />);
     const h1 = screen.queryByText("Welcome!");
 
     // Post Expectations
@@ -30,7 +31,7 @@ describe("Login Component", async () => {
   });
 
   it("Render Login Button", async () => {
-    render(<Login />);
+    render(<App />);
     const button = screen.queryByText("LOG IN");
 
     // Post Expectations
@@ -38,7 +39,7 @@ describe("Login Component", async () => {
   });
 
   it("should handle email input change", () => {
-    const { getByTestId } = render(<Login />);
+    const { getByTestId } = render(<App />);
     const emailField = getByTestId("email-field");
 
     const email = "adamjamiu98@gmail.com";
@@ -50,7 +51,7 @@ describe("Login Component", async () => {
   });
 
   it("should handle passowrd input change", () => {
-    const { getByTestId } = render(<Login />);
+    const { getByTestId } = render(<App />);
     const passwordField = getByTestId("password-field");
 
     const password = "123456789";
@@ -60,4 +61,5 @@ describe("Login Component", async () => {
 
     expect(passwordField.value).toBe(password);
   });
+  
 });

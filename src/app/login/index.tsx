@@ -3,13 +3,11 @@ import { FlexColumn, CustomContainer, TextInput, Button } from "../../style";
 import lendsqr_logo from "../../assets/logo.svg";
 import login_img from "../../assets/pablo-sign-in 1.svg";
 import "./index.scss";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const SignIn: React.FC = (): React.ReactElement => {
   const [isPassType, setIsPassType] = React.useState<string>("password");
   document.title = "Lendsqr | Login";
-
-  const navigate = useNavigate();
 
   //   toggle password type
   const togglePassword = (): void => {
@@ -22,10 +20,6 @@ export const SignIn: React.FC = (): React.ReactElement => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-
-
-    navigate("/dashboard/users");
-    // document.location.href = "dashboard";
   };
 
   return (
@@ -85,9 +79,11 @@ export const SignIn: React.FC = (): React.ReactElement => {
 
           <p className="fgt_pass">FORGOT PASWORD?</p>
 
-          <Button topMargin="1" size="14px" type="submit">
-            LOG IN
-          </Button>
+          <Link to="/dashboard/users">
+            <Button topMargin="1" size="14px" type="submit">
+              LOG IN
+            </Button>
+          </Link>
         </form>
       </FlexColumn>
     </CustomContainer>
