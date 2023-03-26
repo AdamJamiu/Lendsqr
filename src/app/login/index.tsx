@@ -3,13 +3,13 @@ import { FlexColumn, CustomContainer, TextInput, Button } from "../../style";
 import lendsqr_logo from "../../assets/logo.svg";
 import login_img from "../../assets/pablo-sign-in 1.svg";
 import "./index.scss";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const SignIn: React.FC = (): React.ReactElement => {
   const [isPassType, setIsPassType] = React.useState<string>("password");
   document.title = "Lendsqr | Login";
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   //   toggle password type
   const togglePassword = (): void => {
@@ -23,8 +23,9 @@ export const SignIn: React.FC = (): React.ReactElement => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    // Navigate("/dashboard");
-    document.location.href = "/dashboard";
+
+    navigate("/dashboard/users");
+    // document.location.href = "dashboard";
   };
 
   return (

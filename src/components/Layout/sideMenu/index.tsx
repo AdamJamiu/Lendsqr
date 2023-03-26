@@ -3,7 +3,7 @@ import { FlexRow, SideMenuContainer } from "../../../style";
 import data from "../../../sidebarData";
 import briefCase from "../../../assets/sideMenu/organization.svg";
 import arrowDown from "../../../assets/sideMenu/arrowDown.svg";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AppContext from "../../../context";
 import "./index.scss";
 import logOut from "../../../assets/sideMenu/log-out.svg";

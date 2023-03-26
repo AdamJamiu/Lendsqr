@@ -13,7 +13,7 @@ function App() {
       <AppProvider>
         <Routes>
           <Route index element={<SignIn />} path="/" />
-          <Route element={<Dashboard />} path="/dashboard">
+          <Route element={<Dashboard />} path="dashboard">
             <Route element={<User />} path="users" />
             <Route element={<UserDetails />} path="users/:id" />
             <Route
