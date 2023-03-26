@@ -14,7 +14,6 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import AppContext from "../../context";
 import LoadingGear from "../loading";
 import "./index.scss";
-import UserData from "../../model/interface/data";
 
 const UserDetails: React.FC = () => {
   const { loading } = React.useContext(AppContext);

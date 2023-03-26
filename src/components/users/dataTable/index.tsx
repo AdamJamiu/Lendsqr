@@ -70,6 +70,7 @@ const columns: GridColDef[] = [
     field: "icon",
     headerName: "",
     width: 10,
+    // @ts-ignore
     renderCell: (params) => <MenuIcon id={params.id.toString()} />,
   },
 ];
